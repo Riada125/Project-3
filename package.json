@@ -4,6 +4,8 @@
   "description": "Marissa is the best  I like eggs!!! and peas, petit pois Michael is cool.",
   "main": "app.js",
   "scripts": {
+    "build": "npm run seed; webpack -p",
+  	"start": "node backend/app.js",
     "test": "mocha backend/test/**/*_spec.js --require backend/test/helper --recursive --exit",
     "seed": "node backend/db/seeds.js",
     "serve:back": "nodemon backend/app.js",
