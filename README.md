@@ -11,7 +11,7 @@ We were required to:
 * Use an Express API to serve our data from a Mongo database
 * Handle API requests with a separate front-end built with React
 
-The resulting application titled 'the-kitchen' was constructed with team members [Michael](https://github.com/mjadair) & [Marissa](https://github.com/marepstein).
+The resulting application titled 'the-kitchen' was constructed with team members [Michael](https://github.com/mjadair) & [Reggie](https://github.com/mr-anansi).
 ​
 ## Installation
 
@@ -25,6 +25,7 @@ When running this project in a local environment, run `npm install` in the CLI t
 #### Front-end
 
 * HTML5
+* CSS3
 * SCSS
 * JavaScript (ES6)
 * React.js
@@ -118,7 +119,7 @@ const EditProfile = (props) => {
 
 We began this project with a brainstorming document that took into account the areas we were interested in and the ideas we were interested in fleshing out. 
 
-Our ideas ranged around the arts and we eventually settled on a food-focussed app with team-members [Michael](https://github.com/mjadair) and [Marissa](https://github.com/marepstein) particularly passionate about any research involved! 
+Our ideas ranged around the arts and we eventually settled on a food-focussed app with myself and [Michael](https://github.com/mjadair) particularly passionate about any research involved! Though our other team-mate was less keen on the idea, we used this to our advantage as we were able to adopt the perspective of a user less passionate about food and cooking to create a site for all interests. 
 
 Our goal was to create something that would address one’s food needs, whether in a foodie state of mind or otherwise. Our stretch goal was to have a user funnel that was guided by matching the users personalisations to our data.
 
@@ -180,7 +181,7 @@ const recipeSeed = (user) => {
 
 ```
 
-This enabled two large files to be created separately as well as a shorter seed script file. The data created as follows:
+This enabled two large files to be created separately as well as a shorter user seed script file. The data created as follows:
 
 ```
 mongoose.connect(
@@ -356,9 +357,9 @@ const addItem = () => {
 
 ## Styling
 
-While the objective was to create a custom user path as a stretch goal, provision was made for the other paths that the user might decide to take to get to the core data. 
+For styling, we created a food-art theme throughout. 
 
-Because of this, we created the classic home page, recipe, restaurant and profile pages. The home page highlighted the two fundamental user decision: eat in or eat out.
+We created a classic home page, recipe, restaurant and profile pages - all of which incorporated similar watercolor images. The home page highlighted the two fundamental user decision: eat in or eat out.
 
 The home page:
 
@@ -429,7 +430,9 @@ return <div className="recipes">
 
 ```
 
-A call at the top level to all of the data happened on visit of the page and then the filtering would take place (in this specific example) at the 'FilteredRecipeForm' level by passing down the required functions through props.
+A call at the top level to all of the data happened on visit of the page and then the filtering would take place (in this specific example) at the 'FilteredRecipeForm' level by passing down the required functions through props. User-inputted information can query the recipe/restaurant information by way of the categories assigned to our app data on creation. Through the use of React select, multiple queries in the form of tags could be generated.
+
+This was particularly challenging, and required a collaborative effort as we ran into a number of issues, such as, with the structure of the data. In order to filter, we had to retrieve each tag from the schema, remove any repition and create a function that matches chosen tags with tags in each restaurants/recipes schema - which can be multiple. However, through carefully breaking down the issue together we were able to come to a solution. 
 
 ```
 function filterRecipes(tags) {
@@ -444,8 +447,6 @@ function filterRecipes(tags) {
   }
 
 ```
-
-User-inputted information can query the recipe/restaurant information by way of the categories assigned to our app data on creation. Through the use of React select, multiple queries in the form of tags could be generated.
 
 ```
 function handleSelect(selectedItems) {
