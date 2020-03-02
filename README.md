@@ -5,7 +5,7 @@
 ## Overview
 
 
-##Brief
+## Brief
 
 * Work in a team, using **git to code collaboratively**.
 * **Build a full-stack application** by making your own backend and your own front-end
@@ -13,7 +13,7 @@
 * **Consume your API with a separate front-end** built with React
 * **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
 
-##Technologies Used
+## Technologies Used
 - HTML5
 - CSS3
 - JavaScript (ES6)
