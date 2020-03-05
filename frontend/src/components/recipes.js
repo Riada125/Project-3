@@ -29,13 +29,9 @@ const Recipes = () => {
     const recipes = initialData.filter((recipe) => {
       return types.every(element => recipe.category.includes(element))
     })
-    console.log(recipes)
     setFilteredData(recipes)
   }
 	
-
-  
-
   return <div className="recipes">
     <div className="section">
       <h1 className="is-size-1 is-black has-text-centered">Have a look at these Recipes...</h1>

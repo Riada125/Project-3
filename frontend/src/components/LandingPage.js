@@ -57,10 +57,10 @@ class LandingPage extends React.Component {
       <div style={{ height: 300 }} className="below-hero">
         <div className="section">
           <Fade right>
-            <h2>Providing food for those who love to cook...</h2>
+            <h2 className="landingtext">Providing food for those who love to cook...</h2>
           </Fade>
           <Fade left>
-            <h2>...and those who prefer to be cooked for</h2>
+            <h2 className="landingtext">...and those who prefer to be cooked for</h2>
           </Fade>
         </div>
       </div>
@@ -74,7 +74,7 @@ class LandingPage extends React.Component {
           </Fade>
         </div>
       </div>
-      <h2>{'..'}</h2>
+      <h2 className="landingtext">{'..'}</h2>
     </div>
   }
 }
