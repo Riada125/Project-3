@@ -54,7 +54,7 @@ class LandingPage extends React.Component {
           <div className="maintext" style={insideStyles}>The Kitchen</div>
         </div>
       </Parallax>
-      <div style={{ height: 300 }} className="below-hero">
+      {/* <div style={{ height: 300 }} className="below-hero">
         <div className="section">
           <Fade right>
             <h2 className="landingtext">Providing food for those who love to cook...</h2>
@@ -74,7 +74,7 @@ class LandingPage extends React.Component {
           </Fade>
         </div>
       </div>
-      <h2 className="landingtext">{'..'}</h2>
+      <h2 className="landingtext">{'..'}</h2> */}
     </div>
   }
 }
