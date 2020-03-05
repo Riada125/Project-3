@@ -50,8 +50,8 @@ class LandingPage extends React.Component {
             />
           </div>
         )}>
-        <div style={{ height: 900 }}>
-          <div style={insideStyles}>The Kitchen</div>
+        <div className="mainbanner" style={{ height: 900 }}>
+          <div className="maintext" style={insideStyles}>The Kitchen</div>
         </div>
       </Parallax>
       <div style={{ height: 300 }} className="below-hero">
