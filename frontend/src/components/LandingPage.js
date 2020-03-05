@@ -45,7 +45,7 @@ class LandingPage extends React.Component {
                 borderRadius: '50%',
                 transform: 'translate(-50%,-50%)',
                 width: percentage * 700,
-                height: percentage * 700
+                height: '100vh'
               }}
             />
           </div>
