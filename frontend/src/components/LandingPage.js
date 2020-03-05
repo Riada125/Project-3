@@ -28,7 +28,7 @@ const image4 = 'https://tr-images.condecdn.net/image/1WxNDMm9eOR/crop/1620/f/ber
 
 class LandingPage extends React.Component {
   state = { hovering: false }
-	
+
   render() {
     return <div style={styles}>
       <Parallax
@@ -45,7 +45,7 @@ class LandingPage extends React.Component {
                 borderRadius: '50%',
                 transform: 'translate(-50%,-50%)',
                 width: percentage * 700,
-                height: '100vh'
+                height: percentage * 700
               }}
             />
           </div>
@@ -54,27 +54,29 @@ class LandingPage extends React.Component {
           <div className="maintext" style={insideStyles}>The Kitchen</div>
         </div>
       </Parallax>
-      {/* <div style={{ height: 300 }} className="below-hero">
-        <div className="section">
-          <Fade right>
-            <h2 className="landingtext">Providing food for those who love to cook...</h2>
-          </Fade>
+      <div id="mobile-below">
+        <div style={{ height: 300 }} className="below-hero">
+          <div className="section">
+            <Fade right>
+              <h2 className="landingtext">Providing food for those who love to cook...</h2>
+            </Fade>
+            <Fade left>
+              <h2 className="landingtext">...and those who prefer to be cooked for</h2>
+            </Fade>
+          </div>
+        </div>
+        <div style={{ height: 600 }} className="second-below-hero">
           <Fade left>
-            <h2 className="landingtext">...and those who prefer to be cooked for</h2>
+            <RecipeHoveredSquare className="columns is-one-quarter-mobile" />
           </Fade>
+          <div>
+            <Fade right>
+              <RestaurantHoveredSquare className="columns is-one-quarter-mobile" />
+            </Fade>
+          </div>
         </div>
+        <h2 className="landingtext">{'..'}</h2>
       </div>
-      <div style={{ height: 600 }} className="second-below-hero">
-        <Fade left>
-          <RecipeHoveredSquare className="columns is-one-quarter-mobile"/>
-        </Fade>
-        <div>
-          <Fade right> 
-            <RestaurantHoveredSquare className="columns is-one-quarter-mobile"/>
-          </Fade>
-        </div>
-      </div>
-      <h2 className="landingtext">{'..'}</h2> */}
     </div>
   }
 }
