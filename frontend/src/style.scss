@@ -148,6 +148,7 @@ input {
 }
 
 #inner-border {
+  width: 40vw;
 		outline: 3px solid white;
 		outline-offset: -30px;
 }
@@ -394,17 +395,4 @@ input {
 a {
 	text-decoration: none; 
 	color: black
-}
-
-
-@media only screen and (min-height: 1200px) {
-
-  #inner-border{
-
-    width: 40vw;
-    background-color: black;
-    outline: none;
-  }
-
-
 }
