@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
 import { Parallax } from 'react-parallax'
 import Fade from 'react-reveal/Fade'
-// import Navbar from './Navbar'
-// import posed from 'react-pose'
-// import styled from 'styled-components'
 import RecipeHoveredSquare from './HoveredSquare'
 import RestaurantHoveredSquare from './RestaurantHoveredSquare'
 

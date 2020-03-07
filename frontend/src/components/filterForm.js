@@ -6,21 +6,14 @@ const FilteredForm = ({ Restaurants, updateRestaurants }) => {
   const filterOptions = Restaurants.map((restaurant) => {
     return restaurant.category
   })
-  // console.log(filterOptions)
-  // this is an array of arrays of the restaurants categories 
 	
   const tagsArray = filterOptions.flat()
-  // console.log(filterOptions.flat())
-  // creates an array of all tags/categories as strings
 
   const allTags = [...new Set(tagsArray)]
-  // console.log(allTags)
-  // creates an array of tags with no repetition
 	
   const allTagsLabeled = allTags.map((tag) => {
     return { value: tag, label: tag }
   })
-  // gives the values in the multiselect 
 
  
   function handleSelect(selectedItems) {
