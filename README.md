@@ -4,9 +4,29 @@
 
 ## <span style="font-family:Courier New">Overview </span>
 
+The Kitchen is a full-stack app that includes a RESTful API built with Express, MonogoDB and NodeJS and a React Front-end. 
+
+The concept was to build an app that asked users if they wanted to dine-in or eat-out and then provide them with options based on the decision. 
+
+The dine-in portion of the website allows users to search recipes from our database, it also allows logged in users to add their own recipes, much like a virtual recipe book and the user can also have shopping lists for each recipe emailed to their registered email address.
+
+The eat-out section gives users details about London restaurants from our own database. 
+
+Users also have a profile page which displays their favourite recipes and restaurants. 
+
+## <span style="font-family:Courier New"> Table of Contents </span>
+1. [Brief](#Brief)
+2. [Technologies used](#Technologies-used)
+3. [Approach](#Approach)
+    - [Planning](#Planning)
+    - [Back-end](#Back-end)
+    - [Front-end](#Front-end)
+4. [Potential future features](#Potential-future-features)
+5. [Bugs](#Bugs)
+6. [Lessons learned](#Lessons-learned)
 
 
-## <span style="font-family:Courier New"> Brief </span>
+## Brief
 
 * Work in a team, using **git to code collaboratively**.
 * **Build a full-stack application** by making your own backend and your own front-end
@@ -27,6 +47,12 @@
 - Google Fonts
 
 ## <span style="font-family:Courier New">Approach </span>
+
+### <span style="font-family:Courier New">Planning</span>
+
+### <span style="font-family:Courier New">Back-End</span>
+
+### <span style="font-family:Courier New">Front-End</span>
 
 ## <span style="font-family:Courier New">Challenges </span>
 
