@@ -16,7 +16,7 @@ Users also have a profile page which displays their favourite recipes and restau
 
 ## <span style="font-family:Courier New"> Table of Contents </span>
 1. [Brief](#Brief)
-2. [Technologies used](#Technologies-used)
+2. [Technologies used](#Tech)
 3. [Approach](#Approach)
     - [Planning](#Planning)
     - [Back-end](#Back-end)
@@ -26,7 +26,7 @@ Users also have a profile page which displays their favourite recipes and restau
 6. [Lessons learned](#Lessons-learned)
 
 
-## Brief
+## <span style="font-family:Courier New" id="Brief">Technologies Used </span>
 
 * Work in a team, using **git to code collaboratively**.
 * **Build a full-stack application** by making your own backend and your own front-end
@@ -34,7 +34,7 @@ Users also have a profile page which displays their favourite recipes and restau
 * **Consume your API with a separate front-end** built with React
 * **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
 
-## <span style="font-family:Courier New">Technologies Used </span>
+## <span style="font-family:Courier New" id="Tech">Technologies Used </span>
 - HTML5
 - CSS3
 - JavaScript (ES6)
@@ -46,7 +46,7 @@ Users also have a profile page which displays their favourite recipes and restau
 - Bulma
 - Google Fonts
 
-## <span style="font-family:Courier New">Approach </span>
+## <span style="font-family:Courier New" id="Approach">Approach </span>
 
 ### <span style="font-family:Courier New">Planning</span>
 
