@@ -18,12 +18,12 @@ Users also have a profile page which displays their favourite recipes and restau
 1. [Brief](#Brief)
 2. [Technologies used](#Tech)
 3. [Approach](#Approach)
-    - [Planning](#Planning)
-    - [Back-end](#Back-end)
-    - [Front-end](#Front-end)
-4. [Potential future features](#Potential-future-features)
-5. [Bugs](#Bugs)
-6. [Lessons learned](#Lessons-learned)
+    - [Planning](#planning)
+    - [Back-end](#back)
+    - [Front-end](#front)
+4. [Potential future features](#future)
+5. [Bugs](#bugs)
+6. [Lessons learned](#lessons)
 
 
 ## <span style="font-family:Courier New" id="Brief">Technologies Used </span>
@@ -48,20 +48,20 @@ Users also have a profile page which displays their favourite recipes and restau
 
 ## <span style="font-family:Courier New" id="Approach">Approach </span>
 
-### <span style="font-family:Courier New">Planning</span>
+### <span style="font-family:Courier New" id="planning">Planning</span>
 
-### <span style="font-family:Courier New">Back-End</span>
+### <span style="font-family:Courier New" id="back">Back-End</span>
 
-### <span style="font-family:Courier New">Front-End</span>
+### <span style="font-family:Courier New" id="front">Front-End</span>
 
-## <span style="font-family:Courier New">Challenges </span>
-
-
-## <span style="font-family:Courier New">Successes </span>
+## <span style="font-family:Courier New" id="challenges">Challenges </span>
 
 
-## <span style="font-family:Courier New">Potential Future Features </span>
+## <span style="font-family:Courier New" id="successes">Successes </span>
 
 
-## <span style="font-family:Courier New">Lessons Learned </span>
+## <span style="font-family:Courier New" id="future">Potential Future Features </span>
+
+
+## <span style="font-family:Courier New" id="lessons">Lessons Learned </span>
 
