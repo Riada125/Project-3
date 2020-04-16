@@ -13,7 +13,6 @@ function show(req, res) {
   Restaurant
     .findById(req.params.id)
     .then(restaurant => {
-      console.log('My restaurant is', restaurant.name)
       if (!restaurant) res.status(404).json({ message: '404 Not found' })
       else res.status(200).json(restaurant)
     })

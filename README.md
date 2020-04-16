@@ -135,8 +135,8 @@ const commentSchema = new mongoose.Schema({
   |-----------	|-----	|------	|-----	|--------	|
   | /register 	|     	|   x  	|     	|        	|
   | /login    	|     	|   x  	|     	|        	|
-  | /show   	|  x  	|     	|    	|       
-  | /edit   	|    	|     	|  x  	|      	|
+  | /profile   	|  x  	|     	|    	|       
+  | /profile/edit  	|    	|     	|  x  	|      	|
 
 
 - `/register` has a post route, where the new user's data is received and stored in the database.
@@ -168,28 +168,96 @@ function login(req, res) {
 }
 ```
 
-
-
-- `/circle` is the most complex route, having all four possible options. 
-  - The GET route returns a list of all the users who have requested to be added to the request maker's circle, as well as all currently approved users.
-  - The POST route is used to request another user to be added to the request maker's circle, by using the other's username. The API then adds the request maker's ID to that user's 'Requested' list. 
-  - The PUT route approves one of the users from the request maker's requests list, again by providing their username.
-  - The DELETE route removes one of the users from the request maker's approved list and therefore from that user's circle, also by providing their username.
-
-2. Location
+2. Restaurants
 
   |                      	| GET 	| POST 	| PUT 	| DELETE 	|
   |----------------------	|-----	|------	|-----	|--------	|
-  | /locations           	|  x  	|   x  	|     	|        	|
-  | /locations/available 	|  x  	|      	|     	|        	|
-  | /locations/:id       	|  x  	|      	|  x  	|    x   	|
+  | /restaurants           	|  x  	|     	|     	|        	|
+  | /restaurant/:id 	|  x  	|      	|     	|        	|
 
-- `/locations` has both a GET route, which was only used for development and provides all locations in the database, and a POST route, where users can post new locations to the database.
-- `/locations/available` only has a GET route, which provides a complete list of all the locations that the request maker has access to (i.e. all locations of their own, those shared by their circle and all public locations).
-- `/locations/:id` has the following routes for a single location identified by the ID: 
-  - The GET route provides all information of that location.
-  - The PUT route allows that information to be altered by new data provided, but only by the user who created the location.
-  - The DELETE route allows the user who created the location to delete it as well.
+
+- Restaurants simply has two `/get` end-points. For users to view all or individual restaurants from our existing database. 
+
+
+3. Recipes
+
+ |                      	| GET 	| POST 	| PUT 	| DELETE 	|
+  |----------------------	|-----	|------	|-----	|--------	|
+  | /recipes           	|  x  	|   x  	|     	|        	|
+  | /recipes/:id 	|  x  	|  x    	|   x  	|    x    	|
+    | /recipes/:id/comments/:commentId          	|    	|    	|     	|     x   	|
+    
+- Any user can `/get` all recipes and individual recipes:
+
+```js
+function index(req, res) {
+  Recipe
+    .find()
+    .populate('user')
+    .populate('comments.user')
+    .then(recipes => res.status(200).json(recipes))
+    .catch(err => console.log(err))
+}
+
+function show(req, res) {
+  Recipe
+    .findById(req.params.id)
+    .populate('comments.user')
+    .then(recipe => {
+      console.log('My recipe is', recipe.name)
+      if (!recipe) res.status(404).json({ message: '404 Not found' })
+      else res.status(200).json(recipe)
+    })
+    .catch(err => console.log(err))
+}
+```
+
+- A registered, logged-in user can also `/post` recipes as well as `/put` and `/delete` any recipes that they have posted.
+
+The below functions all pass through a secure route to ensure that the user is logged in and the latter two functions ensure that the user making the request matches the user who created the recipe. Users cannot see these options on the front-end if unless they are authorised. 
+
+```js
+function createRecipe(req, res) {
+  req.body.user = req.currentUser
+  Recipe
+    .create(req.body)
+    .then(recipe => res.status(201).json(recipe))
+    .catch(err => console.log(err))
+}
+
+
+function updateRecipe(req, res) {
+  Recipe
+    .findById(req.params.id)
+    .then(recipe => {
+      if (!recipe) return res.status(404).json({ message: '404 Not found' })
+      if (!req.currentUser._id.equals(recipe.user)) return res.status(401).json({ message: 'Unauthorized' })
+      return recipe.set(req.body)
+    })
+    .then(recipe => recipe.save())
+    .then(recipe => res.status(202).json(recipe))
+}
+
+
+function removeRecipe(req, res) {
+  Recipe
+    .findById(req.params.id)
+    .then(recipe => {
+      if (!recipe) return res.status(404).json({ message: 'Not Found' })
+      if (!req.currentUser._id.equals(recipe.user)) return res.status(401).json({ message: 'Unauthorized' })
+      return recipe.remove()
+    })
+    .then(() => res.status(200).json({ message: 'Recipe deleted' }))
+    .catch(err => console.log(err))
+}
+```
+
+US
+
+
+
+ 
+
 
 
 ### <span style="font-family:Courier New" id="front"><ins>Front-End</ins></span>
