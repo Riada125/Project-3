@@ -292,7 +292,7 @@ And we get the token and include it in the header of any of our requests to the 
   }
 ```
 
-Below is how the SecureRoute is set up:
+Below is how the SecureRoute is setup:
 
 ```js
 function secureRoute(req, res, next) {
