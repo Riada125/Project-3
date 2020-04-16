@@ -185,7 +185,7 @@ function login(req, res) {
   |----------------------	|-----	|------	|-----	|--------	|
   | /recipes           	|  x  	|   x  	|     	|        	|
   | /recipes/:id 	|  x  	|  x    	|   x  	|    x    	|
-    | /recipes/:id/comments/:commentId          	|    	|    	|     	|     x   	|
+  /recipes/:id/comments/:commentId          	|    	|    	|     	|     x   	|
     
 - Any user can `/get` all recipes and individual recipes:
 
