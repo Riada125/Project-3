@@ -1,6 +1,7 @@
 ### ![GA](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png) General Assembly, Software Engineering Immersive
 
 # <span style="font-family:Courier New">The Kitchen </span>🍴
+by [Michael Adair](https://github.com/mjadair), [Marissa Epstein](https://github.com/marepstein) and [Reggie Tachie-Menson](https://github.com/reggiemenson)
 
 ## <span style="font-family:Courier New">Overview </span>
 
@@ -15,18 +16,17 @@ The eat-out section gives users details about London restaurants from our own da
 Users also have a profile page which displays their favourite recipes and restaurants. 
 
 ## <span style="font-family:Courier New"> Table of Contents </span>
-1. [Brief](#Brief)
+1. [The Brief](#Brief)
 2. [Technologies used](#Tech)
 3. [Approach](#Approach)
     - [Planning](#planning)
     - [Back-end](#back)
     - [Front-end](#front)
 4. [Potential future features](#future)
-5. [Bugs](#bugs)
-6. [Lessons learned](#lessons)
+5. [Lessons learned](#lessons)
 
 
-## <span style="font-family:Courier New" id="Brief">Technologies Used </span>
+## <span style="font-family:Courier New" id="Brief">The Brief</span>
 
 * Work in a team, using **git to code collaboratively**.
 * **Build a full-stack application** by making your own backend and your own front-end
