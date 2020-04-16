@@ -52,6 +52,82 @@ Users also have a profile page which displays their favourite recipes and restau
 
 ### <span style="font-family:Courier New" id="back">Back-End</span>
 
+**Models**
+
+We specified four models which utilise a Mongoose Schema class. 
+
+A user:
+
+```js
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  age: { type: Number },
+  image: { type: String },
+  dietary: { type: [String] },
+  favouriteRestaurants: { type: [Object] },
+  favouriteRecipes: { type: [Object] }
+}
+```
+
+A restaurant:
+
+```js
+const restaurantSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  location: { type: String, required: true },
+  image: { type: [String], required: true },
+  category: { type: [String], required: true },
+  cuisine: { type: String },
+  type: { type: [String] },
+  dietary: { type: [String] },
+  postcode: { type: [String], required: true },
+  priceRange: { type: String, required: true },
+  link: { type: String, required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  comments: [commentSchema]
+}, {
+  timestamps: true
+})
+```
+
+and a Recipe:
+
+```
+const recipeSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  author: { type: String, required: true },
+  about: { type: String },
+  ingredients: { type: [String], required: true },
+  method: { type: [String], required: true },
+  image: { type: [String], required: true },
+  category: { type: [String], required: true },
+  cuisine: { type: String },
+  type: { type: [String], required: true },
+  dietary: { type: [String] },
+  serves: { type: String },
+  complexity: { type: [String] },
+  time: { type: String  },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  comments: [ commentSchema ] 
+}, {
+  timestamps: true
+})
+```
+
+Users can also comment on Recipes and so we also have a comment Schema:
+
+```js
+const commentSchema = new mongoose.Schema({
+  text: { type: String, required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true
+})
+```
+
+
 ### <span style="font-family:Courier New" id="front">Front-End</span>
 
 ## <span style="font-family:Courier New" id="challenges">Challenges </span>

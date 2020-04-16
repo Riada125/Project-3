@@ -57,9 +57,6 @@ function removeRecipe(req, res) {
 }
 
 
-
-
-
 //************************ADDING COMMENTS FUNCTIONALITY */
 function createComment(req, res) {
   req.body.user = req.currentUser

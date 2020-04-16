@@ -2,9 +2,6 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 
-//Reggie: Weekend work
-//Reggie: Actions behind register and login requests
-
 function register(req, res, next) {
   User
     .create(req.body)

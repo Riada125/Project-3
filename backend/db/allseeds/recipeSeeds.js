@@ -1,8 +1,3 @@
-// const Restaurant = require('../../models/Restaurant')
-// const seededUser = require('../allseeds/userSeed')
-// const User = require('../../models/User')
-
-
 const recipeSeed = (user) => {
   return [{
     name: 'Pappardelle with nduja, mascarpone and lemon',

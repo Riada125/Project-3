@@ -11,7 +11,6 @@ router.route('/recipes')
   .post(secureRoute, recipes.createRecipe)
 
 
-
 router.route('/recipes/:id')
   .get(recipes.show)
   .put(secureRoute, recipes.updateRecipe)
@@ -27,9 +26,6 @@ router.route('/restaurants')
 
 router.route('/restaurants/:id')
   .get(restaurants.show)
-
-// Reggie: I've put a secure route on the profile to enable it to verify, pull data and then show. It does this through following the secure
-//process, extracting the id and then following the controller logic.
 
 router.route('/profile')
   .get(secureRoute, users.show)
