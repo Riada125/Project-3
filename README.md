@@ -256,6 +256,67 @@ Users can also comment on recipes and delete their own comments. These functions
 
 
 
+**<ins>Secure Route</ins>**
+
+A number of the API Endpoints need to pass through a secure route to ensure that the user is authorised. An example of how this looks in the router is below:
+
+```js
+router.route('/recipes/:id')
+  .get(recipes.show)
+  .put(secureRoute, recipes.updateRecipe)
+  .delete(secureRoute, recipes.removeRecipe)
+  .post(secureRoute, recipes.createComment)
+```
+As you can see, any one can see an individual recipe, but only authorised users can reach the end points that follow the secure route. 
+
+We use JSON Web Token for this. When a user logs in, they are assigned a token:
+
+```js
+ const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '2h' }) 
+ res.status(202).json({ message: `Welcome Back ${user.username}`, user, token })
+
+```
+We save the token to local storage when it is received by our front-end:
+
+```js
+  static setToken(token) {
+    localStorage.setItem('token', token)
+  }
+```
+
+And we get the token and include it in the header of any of our requests to the API:
+
+```js
+  static getToken() {
+    return localStorage.getItem('token')
+  }
+```
+
+Below is how the SecureRoute is set up:
+
+```js
+function secureRoute(req, res, next) {
+  if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) { 
+    return res.status(401).json({ message: 'Unauthorized' })
+  }
+	
+  const token = req.headers.authorization.replace('Bearer ', '') 
+	
+  jwt.verify(token, secret, (err, payload) => { 
+    if (err) return res.status(401).json({ message: 'Unauthorized' }) 
+    User 
+      .findById(payload.sub) 
+      .then(user => {
+        if (!user) return res.status(401).json({ message: 'Unauthorized' }) 
+        req.currentUser = user
+        next() 
+      })
+      .catch(() => res.status(401).json({ message: 'Unauthorized' }))
+  })
+}
+```
+
+
  
 
 

@@ -39,9 +39,7 @@ const Login = (props) => {
     axios.post('/api/login', data)
       .then(response => {
         Auth.setToken(response.data.token)
-        /* We simply reference the the state hook where needed and make changes. These changes will reflect in all areas that have access. */
         setUserInfo(response.data.user)
-        // console.log(response.data.user)
         props.history.push('/recipes')
       })
 
