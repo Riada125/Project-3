@@ -94,7 +94,7 @@ const restaurantSchema = new mongoose.Schema({
 
 and a Recipe:
 
-```
+```js
 const recipeSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   author: { type: String, required: true },
@@ -252,7 +252,7 @@ function removeRecipe(req, res) {
 }
 ```
 
-US
+Users can also comment on recipes and delete their own comments. These functions are similar to those above. 
 
 
 
