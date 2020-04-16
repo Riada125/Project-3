@@ -5,7 +5,7 @@ const { secret } = require('../config/environment')
 function register(req, res, next) {
   User
     .create(req.body)
-    .then(user => res.status(200).json({ message: `Hi ${user.username}! Let's change the way you do food..` })) // evaluate if welcome message set up correctly
+    .then(user => res.status(200).json({ message: `Hi ${user.username}! Let's change the way you do food..` })) 
     .catch(next)
 }
 
@@ -18,7 +18,6 @@ function login(req, res) {
         return res.status(401).json({ message: 'Unauthorized' }) 
       }
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '2h' }) 
-
       res.status(202).json({ message: `Welcome Back ${user.username}`, user, token })
     }) 
     .catch(() => res.status(401).json({ message: 'Unauthorized' }))

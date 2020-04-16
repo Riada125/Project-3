@@ -23,17 +23,10 @@ const userSchema = new mongoose.Schema({
       delete json.__v
       return json
     }
-    /// Reggie: I've changed the data conversion to json here to exlude our sensitive details, which at this point is just password and then an exlusion of 
-    /// of a mongoose number generator.
   }
 })
 
-//This is the mongoose specific check to make sure each user is unique
-
 userSchema.plugin(require('mongoose-unique-validator'))
-
-//This is the virtual method to check that the password confirmation field has been provided. It sets a virutal schema field, then runs a function.
-//In the function created it checks to see that the confirmation field has been filled.
 
 userSchema
   .virtual('passwordConfirmation')
@@ -41,9 +34,6 @@ userSchema
     this._passwordConfirmation = passwordConfirmation
   })
 
-//This is the validation stage. It uses the pre method to make sure the check is done before submission. It uses the method 'is modified'
-//to check that there has been a submission and then checks the condition regarding matching password and confirmatino field. If the conditions
-//are true then it stops the submission and returns a response.
 
 userSchema
   .pre('validate', function checkPassword(next) {
@@ -53,7 +43,7 @@ userSchema
     next()
   })
 
-//this is the hashing process pre submission to protect data. It operates before submission with the pre method.
+
 
 userSchema
   .pre('save', function hashPassword(next) {
@@ -63,7 +53,6 @@ userSchema
     next()
   })
 
-//this is the final function run if all is well
 
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password)

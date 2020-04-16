@@ -31,7 +31,6 @@ function createRecipe(req, res) {
 }
 
 
-
 function updateRecipe(req, res) {
   Recipe
     .findById(req.params.id)
@@ -50,6 +49,7 @@ function removeRecipe(req, res) {
     .findById(req.params.id)
     .then(recipe => {
       if (!recipe) return res.status(404).json({ message: 'Not Found' })
+      if (!req.currentUser._id.equals(recipe.user)) return res.status(401).json({ message: 'Unauthorized' })
       return recipe.remove()
     })
     .then(() => res.status(200).json({ message: 'Recipe deleted' }))

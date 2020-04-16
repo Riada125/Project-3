@@ -89,8 +89,6 @@ const SingleRecipe = (props) => {
 
 
   const postIt = () => {
-
-    // console.log(data._id)
     axios.post(`/api/recipes/${data._id}`, formData,
       {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }

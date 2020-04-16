@@ -252,7 +252,7 @@ function removeRecipe(req, res) {
 }
 ```
 
-Users can also comment on recipes and delete their own comments. These functions are similar to those above. 
+Users can also comment on recipes and delete their own comments. These functions are similar to those shown above. 
 
 
 
@@ -276,7 +276,7 @@ We use JSON Web Token for this. When a user logs in, they are assigned a token:
  res.status(202).json({ message: `Welcome Back ${user.username}`, user, token })
 
 ```
-We save the token to local storage when it is received by our front-end:
+When the token is received by our front-end, it is saved to local storage:
 
 ```js
   static setToken(token) {
@@ -316,7 +316,7 @@ function secureRoute(req, res, next) {
 }
 ```
 
-
+The verification process takes the payload.sub from the User's token and finds the related user. If it exists, it sets the `req.currentUser` to the user making the request, we can then use this in the subsequent endpoints to determine if the user making the request is the same as the user who created the recipe. 
  
 
 
