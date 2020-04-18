@@ -9,7 +9,7 @@ const Recipes = () => {
   const [initialData, setInitialData] = useState([])
   const [filteredData, setFilteredData] = useState([])
 
-  //***********************Fetches all Recipes from the API */
+  
   useEffect(() => {
     axios.get('/api/recipes')
       .then(response => {

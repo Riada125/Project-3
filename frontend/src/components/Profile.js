@@ -5,22 +5,14 @@ import Auth from '../lib/auth'
 
 import { UserContext } from './UserContext'
 
-//Reggie: Weekend Work
-/* Reggie: I created this page over the weekend for the project. Obviously Marissa will have something to say about styling, 
-however I had to get my hands on some logic behind it. In this form, there is no need for an id in the path and the user's specific data is
-only accessible by the logged in user. It's up to us to decide what to display.*/
 
 const Profile = () => {
-  // I've initialised our state with an object
   const [data, setData] = useState({})
   const [info, setInfo] = useState({})
   const [update, setUpdate] = useState(false)
 
   const { userInfo, setUserInfo } = useContext(UserContext)
 
-  /* In order to get the api to recognise the user as the backend logic dictates, i need to present the token received from the login process.
-  Since we're working with local storage (see Auth class), at this point I retrieve the token from local storage and insert it into the 
-  header in the bearer syntax */
 
   useEffect(() => {
     axios.get('/api/profile', {
@@ -34,7 +26,6 @@ const Profile = () => {
         }
       })
       .catch(error => console.log(error))
-    // .then(console.log(data))
   }, [userInfo])
 
   useEffect(() => {
@@ -43,8 +34,6 @@ const Profile = () => {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log(res.data.user)
           setUserInfo(res.data.user)
           setUpdate(false)
         })
@@ -54,36 +43,29 @@ const Profile = () => {
 
 
   const removeFavRest = (e) => {
-    let match = info.favouriteRestaurants
+    const match = info.favouriteRestaurants
     const update = match.filter((rest) => {
       return rest.name !== e.target.attributes.getNamedItem('data-name').value
     })
     console.log(update)
     setInfo({ ...info, favouriteRestaurants: update })
     setUpdate(true)
-    // console.log(update)  
   }
 
   const removeFavReci = (e) => {
-    let match = info.favouriteRecipes
+    const match = info.favouriteRecipes
     const update = match.filter((reci) => {
       return reci.name !== e.target.attributes.getNamedItem('data-name').value
     })
     console.log(update)
     setInfo({ ...info, favouriteRecipes: update })
     setUpdate(true)
-    // console.log(update)  
   }
 
-  /* There's another oddity at this point. The render happens before the data is pulled and thus one of those conditional tricks is needed
-  to get the data to show correctly. At a later stage, we can include a couple of loading styles to replace what at times can be blank load
-  times.*/
 
   return (
     <div className="section">
       <div className="container">
-        {/* <div className="columns is-multiline">
-          <div className="column is-half-tablet"> */}
         {data.user && <h1>
           Welcome to The Kitchen, {data.user.username}!
         </h1>}
@@ -161,8 +143,6 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {/* </div>
-        </div> */}
       </div>
     </div>
   )
