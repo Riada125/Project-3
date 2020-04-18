@@ -323,7 +323,37 @@ The verification process takes the payload.sub from the User's token and finds t
 
 ### <span style="font-family:Courier New" id="front"><ins>Front-End</ins></span>
 
-*Coming soon*
+**<ins>Hooks</ins>**
+
+This was the first project in which we used React's new Hooks feature. Instead of writing class components, we opted to use the `useState` hook, with `useEffect` in place of `componentDidMount` and `useContext` to share state between components without having to pass props or make repeated calls to our back-end API. 
+
+
+The `useState` hook is used throughout the project. One example of its use is on the registration page:
+
+```js
+ const [data, setData] = useState({})
+ 
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+    setErrors({})
+  }
+  
+    const postIt = () => {
+
+    axios.post('/api/register', data)
+      .then(() => props.history.push('/login'))
+      .catch(err => {
+        setErrors(err.response.data.errors)
+        console.log(err.response.data.errors)
+      })
+  }
+```
+ 
+Above, `useState({})` is setting `data` as an empty object. The handle change function uses `setData` to update the `data` object variable and thus we can then use this data as state in our post to the API. 
+
+
+
+
 
 ## <span style="font-family:Courier New" id="challenges">Challenges </span>
 

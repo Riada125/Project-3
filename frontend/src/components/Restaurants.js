@@ -26,8 +26,6 @@ const Restaurants = () => {
       return types.every(element => restaurant.category.includes(element))
     })
     setFilteredData(restaurants)
-    // is the first array a subset of the second?
-    // this basically checks every type 
   }
 
 

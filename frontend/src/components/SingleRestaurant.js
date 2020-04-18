@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-// import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../lib/auth'
 import { UserContext } from './UserContext'
@@ -30,7 +29,7 @@ const SingleRestaurant = (props) => {
 
 
   const favourite = () => {
-    let update = info.favouriteRestaurants
+    const update = info.favouriteRestaurants
     update.push(data)
     setInfo({ ...info, favouriteRestaurants: update })
     axios.put('/api/profile/edit', info, {
@@ -54,7 +53,6 @@ const SingleRestaurant = (props) => {
       </div>
       <div className="content-div">
         <div className="card has-text-centered" id="inner-border-card" style={{ height: 400, paddingTop: 50, width: 800 }}>
-          {/* <h1 className="title">{data.name}</h1> */}
           <h1 className="subtitle is-size-3-desktop is-size-3-mobile is-size-3-tablet" id="location">{data.location}</h1>
           <h1 className="subtitle is-size-3-desktop is-size-3-mobile is-size-3-tablet">{data.postcode}</h1>
           <h1 className="subtitle is-size-3-desktop is-size-3-mobile is-size-3-tablet">{data.priceRange}</h1>

@@ -96,16 +96,12 @@ const SingleRecipe = (props) => {
       .then(res => {
         setReci(res.data)
         setFormData({ ...formData, text: '' })
-        // props.history.push(`/recipes/${data._id}`)
       })
       .catch(err => {
         setErrors(err.response.data.errors)
         console.log(err.response.data.errors)
       })
   }
-
-
-  // moment(data.comments.timestamp)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -148,7 +144,6 @@ const SingleRecipe = (props) => {
               by {data.author}
       </p>
       <Fade right>
-        {/* <div className="box is-size-6-mobile is-size-5 is-size-7-tablet desktop-only" id="inner-border" style={{ width: 1350, height: 780 }}> */}
         <div className="section" style={{ width: 1000 }}>
           <div className="container is-size-6">
             <div className="columns">

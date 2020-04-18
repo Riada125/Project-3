@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const RestaurantCard = ({ restaurant }) => (
-  // passing through restaurant object as props
   <div className="column is-one-quarter-desktop is-one-third-tablet is-three-quartes-mobile">
     <div className="card">
       <div className="card-image">
