@@ -25,29 +25,20 @@ import Logout from './components/Logout'
 import { UserContext, ReciContext } from './components/UserContext'
 
 const App = (props) => {
-  /* Reggie: (First methods) The issue of authentication for user specific features has come up and so i'm experimenting with setting state at an app level and passing down
-  the information that's required at a single point. I've also included a logout component and route*/
 
   const [userInfo, setUserInfo] = useState(null)
   const [reci, setReci] = useState(null)
-  // const [profile, setProfile] = useState(false)
-
-  /* Reggie: This top level constant is written with the help of another hook (useMemo). This hook allows the variable to be changed when one of the dependencies
-  change. */
+ 
   const sharedInfo = useMemo(() => ({ userInfo, setUserInfo }), [userInfo, setUserInfo])
   const reciPage = useMemo(() => ({ reci, setReci }), [reci, setReci])
 
   useEffect(() => {
-    console.log('running')
-    // console.log(Auth.getToken())
     if (Auth.isAuthorized()) {
-      console.log('setting user')
       axios.get('/api/profile', {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
         .then(response => {
           setUserInfo(response.data.user)
-          // console.log(response.data)
         })
         .catch(error => {
           console.log(error)
@@ -56,12 +47,7 @@ const App = (props) => {
           props.history.push('/login')
         })
     } else return
-    // .then(console.log(data))
   }, [])
-
-  //Reggie: Logout and Profile paths were created over the weekend
-  /* This is where the wrapper that establishes the scope of the sharing of changeable information is provided. The constant defined up
-  top is passed down into the wrapper at the value property. */
 
   return (<BrowserRouter>
     <UserContext.Provider

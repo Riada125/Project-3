@@ -4,17 +4,6 @@ import Auth from '../lib/auth'
 import { UserContext } from './UserContext'
 import Background from '../images/bg2.png'
 
-//Reggie: Weekend Work
-//Reggie: This page had some slight changes to make with regards to the syntax for state on the page. The initial state had to be initialised to
-// specific values so that the code would stay intact. Errors at the foot of the form reference the message for incorrect details.
-
-/* I'd been investigating the passing of information throughout the weekend. My main focus has been to tighten up the logged on user and logged off
-user logic. The key thing that informed this investigation was the need to display items based on authentication without blocking off those same
-routes to users that hadn't logged in.
-
-Eventually, an elegant solution has been found with the introduction of a new hook. This method is quick and concise, gets around directional passing
-of state and updates and allows on page conditionals to be nicely rendered, however it can be broken by page refreshes. */
-
 const sectionStyle = {
   backgroundImage: 'url(' + { Background } + ')'
 }
@@ -24,9 +13,6 @@ const Login = (props) => {
   const [data, setData] = useState({})
   const [errors, setErrors] = useState('')
 
-  /* This following line is the first intro of the useContext hook. In essence it allows for us to share info across the whole code plain.
-  It's first wrapped around all the components that will need the data and then it is referenced in each by declaring the variable linked to 
-  state at the parent level. */
   const { setUserInfo } = useContext(UserContext)
 
   const handleChange = (e) => {
