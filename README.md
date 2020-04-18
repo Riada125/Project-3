@@ -349,7 +349,61 @@ The `useState` hook is used throughout the project. One example of its use is on
   }
 ```
  
-Above, `useState({})` is setting `data` as an empty object. The handle change function uses `setData` to update the `data` object variable and thus we can then use this data as state in our post to the API. 
+Above, `useState({})` is setting `data` as an empty object. The handle change function uses `setData` to update the `data` object variable and thus we can then use this data as state in our post to the API.
+
+
+`useContext` was another helpful Hook for this project. We utilised it to hold the information of the logged-in user across the app so that we didn't have to make repeated calls to the API or pass props through all of our components. 
+
+We have a file called `userContext.js` that creates a context and sets it to a null value:
+
+```js
+import { createContext } from 'react'
+
+export const UserContext = createContext(null)
+```
+
+
+
+We then update the context upon the user's login:
+
+```js
+
+const { setUserInfo } = useContext(UserContext)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('/api/login', data)
+      .then(response => {
+        Auth.setToken(response.data.token)
+        setUserInfo(response.data.user)
+        props.history.push('/recipes')
+      })
+
+```
+
+ Once a user has successfully logged in, we `setUserInfo` to be the response from the API (the details of the logged in user such as their name, id, profile picture and favourite recipes and restaurants).
+
+With this information saved by `useContext`, the entire app can access it as state without props being passed or with us requiring more calls to the API. 
+
+This is used to our advantage in places like the navbar, where the user's profile name is rendered from `userInfo`.
+
+Another place this is used to our advantage is when a logged-in user navigates to a single recipe page:
+
+```js
+        if (userInfo) {
+          setInfo(userInfo)
+          const alreadyAdded = userInfo.favouriteRecipes.some((recipe) => {
+            return recipe._id === newData._id
+          })
+          setAdded(alreadyAdded)
+        }
+```
+
+The snipped above is when we return a single recipe from our API. We check the userInfo from `useContext`, if the user has already favourited the recipe, they will be unable to do so again. 
+
+
+
+
 
 
 
