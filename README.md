@@ -506,16 +506,39 @@ The code to implement sending the email is straightforward and simply follows Ma
 
 ## <span style="font-family:Courier New" id="challenges">Challenges </span>
 
-*Coming soon*
+- As noted above, figuring out the logic to accurately filter our recipes and restaurants in stages was more difficult than we initially anticipated. Mapping through all of our recipes to extract categories to then return an array of unique categories didn't feel like the cleanest way of writing this code. Our models could very likely have been planned better, but this is perhaps also one of the negatives of using a noSQL database. 
+
+- A lot of the logic utilised by the filtered recipe and filtered restaurant components is the very same. I believe this is not ideal practice when one of the best things about working with React is the ability to recycle components. Again, our models could likely have been more effectively structured to avoid repetitive-code. But ultimately, this project is a learning experience and was utterly invaluable for us to better understand building a MERN app. 
+
+
+- This was our very first time working as a team whilst using Git to collaborate simultaneously on the same repo. Resolving merge conflicts was a time-consuming and nerve-wrangling experience! But was a very valuable learning experience and we remain firm friends.
+
 
 ## <span style="font-family:Courier New" id="successes">Successes </span>
-*Coming soon*
+
+- Overall this was a very enjoyable experience and we all gained a huge insight into building a MERN app and working collaboratively using Git. 
+
+- Utilising React Hooks `useEffect`, `useState` and `useContext` for the first time. 
+
+- The range and quality of the seed data for our database of recipes.
+
+- Successfully implementing the filter feature was a really pleasing achievement for us. 
+
+- The code was relatively simple to apply, but the shopping list email functionality is a featured we enjoyed including.
 
 
 ## <span style="font-family:Courier New" id="future">Potential Future Features </span>
-*Coming soon*
+
+- We'd like to make the app eventually look more like our initial idea and have the user experience focus more heavily on providing them with choice and then route them to different gastronomic suggestions based on time of day/how hungry they are/location. 
+
+- The list of restaurants in the existing database is limited. We'd like to add to this. 
 
 
 ## <span style="font-family:Courier New" id="lessons">Lessons Learned </span>
-*Coming soon*
+
+- Write tests
+
+- Plan models meticulously, with a focus on recycling front-end components effectively. 
+
+- React Hooks are better than Class components
 
