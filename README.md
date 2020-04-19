@@ -3,6 +3,8 @@
 # <span style="font-family:Courier New">The Kitchen </span>🍴
 by [Michael Adair](https://github.com/mjadair), [Marissa Epstein](https://github.com/marepstein) and [Reggie Tachie-Menson](https://github.com/reggiemenson)
 
+<img  src=Screenshots/RecipesDesktop.png width=500> <img  src=Screenshots/RecipesMobile.png height=250> 
+
 ## <span style="font-family:Courier New">Overview </span>
 
 The Kitchen is a full-stack app that includes a RESTful API built with Express, MonogoDB and NodeJS and a React Front-end. 
@@ -14,6 +16,8 @@ The dine-in portion of the website allows users to search recipes from our datab
 The eat-out section gives users details about London restaurants from our own seeded database. 
 
 Users also have a profile page which displays their favourite recipes and restaurants. 
+
+This is the third project which I completed during my time in General Assembly's Software Engineering Immersive Bootcamp.
 
 ## <span style="font-family:Courier New"> Table of Contents </span>
 1. [The Brief](#Brief)
@@ -49,6 +53,16 @@ Users also have a profile page which displays their favourite recipes and restau
 ## <span style="font-family:Courier New" id="Approach">Approach </span>
 
 ### <span style="font-family:Courier New" id="planning">Planning</span>
+
+We decided to create an app that focused on food, either cooking at home or dining out. We wanted our page to have a strong amount of content and realised by choosing something like recipes we could create an expansive database of our own fairly easily so that the website would look full of content, rather than relying on an external API or relying on user input. 
+
+We spent an afternoon mapping out our models and the user experience, for both logged-in and logged-out users and wire-framed our intentions. 
+
+Much of our thinking was initially based around user choice - what time of day was it? What did they want to eat? Did they want to cook? 
+
+<img src=Screenshots/Wireframes.jpg width=700> 
+
+As the project deadline loomed, we pared back the choice element and made it a simple option on the landing page. 
 
 ### <span style="font-family:Courier New" id="back">Back-End</span>
 
@@ -416,6 +430,74 @@ One of the biggest challenges we faced on this project was filtering our recipes
 <img src=Screenshots/FilteredRecipes2.png width=700> 
 
 
+From the screenshots above you can see that a user can search for a recipe based on category. Using the `react-select` library, we wanted users to be able to select multiple tags and for the options presented to be continuously refined based on all the selected tags. The example above shows the results for vegetarian dishes in the first image, whilst the second image shows the search further refined to show only pasta dishes that are vegetarian. 
+
+Below is how we managed to implement this search:
+
+
+In the `Recipes` component we make a single call to our API for all recipes. We then set this in state in two places `initialData` and `filteredData`
+
+
+```js
+const Recipes = () => {
+  const [initialData, setInitialData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+
+  
+  useEffect(() => {
+    axios.get('/api/recipes')
+      .then(response => {
+        setInitialData(response.data)
+        setFilteredData([...response.data])
+      })
+      .catch(error => console.log(error))
+  }, [])
+	
+```
+
+We then have a `filterRecipes` function. It takes `tags` as an argument. Tags being the value of the items selected from the `react-select` object. If no tags are selected, the `filteredData` that is used in the return statement to be rendered is reset to be the same as the `initalData` that was set in state by the call to the API. 
+
+```js
+
+  function filterRecipes(tags) {
+    if (tags.length === 0) {
+      return setFilteredData([...initialData])
+    }
+    const types = tags.map(item => item.value)
+    const recipes = initialData.filter((recipe) => {
+      return types.every(element => recipe.category.includes(element))
+    })
+    setFilteredData(recipes)
+  }
+```
+
+The reason that this filtering was originally a confusing problem for us was because recipes can have multiple categories, so we had to narrow down the options for the user to select from, rather than potentially having 20 categories that were all 'vegetarian'. 
+
+We did this in the `FilteredRecipeForm` component by creating an array of all the categories attached to all of our recipes, flattening the data and creating a new array of only the unique values. 
+
+```js
+  const createTags = Recipes.map((recipe) => {
+    return recipe.category
+  })
+
+  const tagsArray = createTags.flat()
+  const allTags = [...new Set(tagsArray)]
+
+  const allTagsLabeled = allTags.map((tag) => {
+    return { value: tag, label: tag }
+  })
+```
+
+**<ins>Email</ins>**
+
+A fun feature we implemented was including the [Mailjet API](https://www.mailjet.com/) to email a shopping list of ingredients to a logged-in users registered email address.
+
+The screenshots below show the 'Email me!' button and the notification using `react-toastify` notifying the user that an email has been sent. 
+
+The code to implement sending the email is straightforward and simply follows Mailjet's basic template.
+
+
+<img  src=Screenshots/RecipeDesktop.png width=500> <img  src=Screenshots/RecipeMobile.png height=250> 
 
 
 
