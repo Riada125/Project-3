@@ -412,7 +412,8 @@ The snipped above is when we return a single recipe from our API. We check the u
 One of the biggest challenges we faced on this project was filtering our recipes using multiple filters.
 
  
-<img  src=Screenshots/FilteredRecipes1.png width=500> <img  src=Screenshots/FilteredRecipes2.png width=500> 
+<img src=Screenshots/FilteredRecipes1.png width=700> 
+<img src=Screenshots/FilteredRecipes2.png width=700> 
 
 
 
