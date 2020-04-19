@@ -323,6 +323,11 @@ The verification process takes the payload.sub from the User's token and finds t
 
 ### <span style="font-family:Courier New" id="front"><ins>Front-End</ins></span>
 
+
+<img  src=Screenshots/HomeDesktop.png width=500> <img  src=Screenshots/HomeMobile.png height=250> 
+
+
+
 **<ins>Hooks</ins>**
 
 This was the first project in which we used React's new Hooks feature. Instead of writing class components, we opted to use the `useState` hook, with `useEffect` in place of `componentDidMount` and `useContext` to share state between components without having to pass props or make repeated calls to our back-end API. 
@@ -399,8 +404,15 @@ Another place this is used to our advantage is when a logged-in user navigates t
         }
 ```
 
-The snipped above is when we return a single recipe from our API. We check the userInfo from `useContext`, if the user has already favourited the recipe, they will be unable to do so again. 
+The snipped above is when we return a single recipe from our API. We check the userInfo from `useContext`, if the user has already favourited the recipe, they will be unable to do so again. It was really pleasing for us to achieve this without having to continuously pass the user as a prop throughout all of our components or make repeated calls to the API to check the state of the user's favourites. 
 
+
+**<ins>Filtering</ins>**
+
+One of the biggest challenges we faced on this project was filtering our recipes using multiple filters.
+
+ 
+<img  src=Screenshots/FilteredRecipes1.png width=250> <img  src=Screenshots/FilteredRecipes2.png width=250> 
 
 
 
