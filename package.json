@@ -48,7 +48,7 @@
     "bulma": "^0.8.0",
     "chai": "^4.2.0",
     "emailjs-com": "^2.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-loader": "^5.0.2",
     "json": "^9.0.6",
     "json-loader": "^0.5.7",
